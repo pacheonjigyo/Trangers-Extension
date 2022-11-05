@@ -1,0 +1,73 @@
+body {
+	background: rgba(255, 136, 41, 0.1);
+
+	color: black;
+
+	font-size: 12px;
+	font-weight: 100;
+
+	overflow: hidden;
+
+	padding: 10px 10px;
+
+	text-align: center;
+
+	width: 200px;
+}
+
+button {
+	background: white;
+
+	border: 1px solid lightgray;
+	border-radius: 5px;
+
+	color: gray;
+	cursor: pointer;
+
+	height: 30px;
+
+	margin-top: 3px;
+
+	width: 100%;
+}
+
+button:hover {
+	background: rgba(255, 136, 41, 0.1);
+
+	color: rgb(255, 136, 41);
+}
+
+.main_title {
+	color: rgb(255, 136, 41);
+
+	font-size: 12px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+	width: 25%;
+
+	text-align: center;
+}
+
+.message {
+	color: rgb(255, 136, 41);
+
+	/* font-weight: bold; */
+}
+
+#main_frame {
+	margin: -20px;
+}
+
+#main_table {
+	margin-bottom: 10px;
+
+	padding: 5px;
+
+	text-align: center;
+
+	width: 100%;
+}
+
+#main_frame {
+	padding: 3px;
+}

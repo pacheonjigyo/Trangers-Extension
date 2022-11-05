@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <link id="appTheme" href="common.css" type="text/css" rel="stylesheet" charset="utf-8" />
+
+    <title>
+        이용권 결제
+    </title>
+
+</head>
+
+<body>
+    <div id="headerMain" class="header-login dark">
+        <div id="uploadText"
+            style="color: white; margin-bottom: 50px; font-size: 30px; font-weight: bold; text-align: center;">
+            이용권 결제
+        </div>
+
+        <div style="color: white; width: 600px;">
+            <div style="font-size: 20px; font-weight: bold; margin-bottom: 15px;">
+                이용 기간
+            </div>
+
+            <table style="margin-bottom: 30px;">
+                <tr>
+                    <td style="color: white; width: 33%;">
+                        <button class="pay-type button inform round" value="1"
+                            style="font-size: 24px; width: 100%; padding: 10px;">
+                            <span value="1" style="color: skyblue; font-size: 16px; font-weight: bold">
+                                1개월 이용권
+                            </span>
+
+                            <br />
+
+                            <span value="1" style="font-weight: bold">
+                                \ 49,500
+                            </span>
+
+                            <span value="1" style="color: lightgray; font-size: 14px;">
+                                <br />
+
+                                (VAT 포함)
+                            </span>
+                        </button>
+                    </td>
+
+                    <td style="color: white; width: 33%;">
+                        <button class="pay-type button default round" value="3"
+                            style="font-size: 24px; width: 100%; padding: 10px;">
+                            <span value="3" style="color: skyblue; font-size: 16px; font-weight: bold;">
+                                3개월 이용권
+                            </span>
+
+                            <br />
+
+                            <span value="3" style="font-weight: bold">
+                                \ 41,800
+                            </span>
+
+                            <span value="3" class="secondary round" value="3"
+                                style="color: lightgray; font-size: 12px; font-weight: bold; padding: 5px;">
+                                15%
+                            </span>
+
+                            <br />
+
+                            <span value="3" style="color: lightgray; font-size: 14px;">
+                                총 \ 125,400 (VAT 포함)
+                            </span>
+                        </button>
+                    </td>
+
+                    <td style="color: white; width: 33%;">
+                        <button class="pay-type button default round" value="4"
+                            style="font-size: 24px; width: 100%; padding: 10px;">
+                            <span value="4" style="color: skyblue; font-size: 16px; font-weight: bold">
+                                6개월 이용권
+                            </span>
+
+                            <br />
+
+                            <span value="4" style="font-weight: bold">
+                                \ 34,650
+                            </span>
+
+                            <span value="4" class="secondary round" value="3"
+                                style="color: lightgray; font-size: 12px; font-weight: bold; padding: 5px;">
+                                30%
+                            </span>
+
+                            <br />
+
+                            <span value="4" style="color: lightgray; font-size: 14px;">
+                                총 \ 207,900 (VAT 포함)
+                            </span>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="font-size: 20px; font-weight: bold; margin-bottom: 15px;">
+                결제 정보
+            </div>
+
+            <table style="font-size: 18px; margin-bottom: 30px;">
+                <tr>
+                    <td style="color: white; width: 33%; text-align: left;">
+                        <span style="color: #ff4b4b;">
+                            *
+                        </span>
+
+                        입금자명
+                    </td>
+
+                    <td style="width: 66%">
+                        <div style="display: flex; width: 100%;">
+                            <input id="payName" class="round" style="width: 100%;">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="color: white; width: 33%; text-align: left;">
+                        <span style="color: #ff4b4b;">
+                            *
+                        </span>
+
+                        연락처
+                    </td>
+
+                    <td style="width: 66%">
+                        <div style="display: flex; width: 100%;">
+                            <input id="payPhone" class="round" style="width: 100%;">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="color: white; width: 33%; text-align: left;">
+                        <span style="color: #ff4b4b;">
+                            *
+                        </span>
+
+                        결제방법
+                    </td>
+
+                    <td style="width: 66%">
+                        <div style="display: flex; width: 100%;">
+                            <select id="payWay" class="round"
+                                style="width: 100%; height: 35px; cursor: pointer; font-size: 14px;  text-align: center;">
+                                <option value="cash">
+                                    현금 결제
+                                </option>
+
+                                <option value="card">
+                                    카드 결제(준비중)
+                                </option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr id="license">
+                    <td style="color: white; width: 33%; text-align: left;">
+                        <span style="color: #ff4b4b;">
+                            *
+                        </span>
+
+                        사업자등록증
+                    </td>
+
+                    <td colspan="4" style="width: 66%;">
+                        <div style="display: flex; width: 100%;">
+                            <label class="button default round" style="height: 24px; padding-top: 8px; width: 100%;">
+                                <span id="payDocumentText">
+                                    파일을 업로드하려면 여기를 클릭하세요.
+                                </span>
+
+                                <input id="payDocument" type="file"
+                                    style="display: none; width: 100%; text-align: left;">
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="font-size: 20px; font-weight: bold; margin-bottom: 15px;">
+                쿠폰 및 할인
+            </div>
+
+            <table style="font-size: 18px; margin-bottom: 30px;">
+                <tr>
+                    <td style="color: white; width: 33%; text-align: left;">
+                        보유적립금
+                    </td>
+
+                    <td style="width: 66%; height: 30px; color: white; font-weight: bold; text-align: right;">
+                        <div id="payCreditTotal" class="round" style="width: 100%;">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="color: white; width: 33%; text-align: left;">
+                        사용적립금
+                    </td>
+
+                    <td style="width: 66%">
+                        <div style="display: flex; width: 100%;">
+                            <input id="payCredit" class="round"
+                                style="font-size: 14px; width: 100%; height: 30px; text-align: right;" />
+
+                            &nbsp;
+
+                            <button id="payCreditApply" class="button round inform"
+                                style="font-size: 14px; width: 100%; height: 34px;">
+                                적용
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="default round" style="font-size: 12px; margin-bottom: 30px; text-align: center;">
+                <label style="cursor: pointer;">
+                    <input id="payAccept" type="checkbox" style="cursor: pointer; vertical-align: middle;" />
+
+                    주문 내용을 확인하였으며,
+
+                    <a target="_blank"
+                        href="https://panoramic-butternut-291.notion.site/5090b4282d88479f8608cd7f60bce6c2"
+                        style="text-decoration: underline;">
+                        서비스 이용약관
+                    </a>
+
+                    에 동의합니다.
+                </label>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <table>
+                    <tr>
+                        <td style="color: white; font-size: 16px; font-weight: bold; width: 66%; text-align: left;">
+                            최종결제금액:
+
+                            <span id="payPrice">
+                            </span>
+                        </td>
+
+                        <td style="color: white; font-size: 16px; font-weight: bold; width: 33%; text-align: right;">
+                            <button id="paySubmit" class="button inform round"
+                                style="font-size: 14px; width: 100%; height: 34px;">
+                                결제하기
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+            <div class="default round" style="font-size: 12px; padding: 10px; margin-bottom: 5px;">
+                입금 계좌: 우리은행 1005-904-020848 / 주식회사 쿠자피에이에스
+            </div>
+
+            <div class="default round" style="font-size: 12px; padding: 10px; margin-bottom: 5px;">
+                이용 기간과 결제 정보 입력(필수) > 계좌로 입금 > 결제하기 버튼 클릭 > 입금 확인 후 승인됩니다.
+            </div>
+
+            <div class="default round" style="font-size: 12px; padding: 10px;">
+                입금 후 1영업일 내로 승인되며 세금계산서는 월단위 일괄 발급됩니다.
+            </div>
+        </div>
+    </div>
+
+    <div id="toastContainer" class="toast-container">
+    </div>
+</body>
+
+</html>

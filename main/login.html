@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <link id="appTheme" href="common.css" type="text/css" rel="stylesheet" charset="utf-8" />
+
+    <title>
+        로그인
+    </title>
+
+</head>
+
+<body style="display: flex;">
+    <div id="headerMain" class="header-login dark" style="color: white; width: 360px;">
+        <div style="margin-bottom: 50px; font-size: 30px; font-weight: bold; text-align: center;">
+            로그인
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <div style="margin-bottom: 5px;">
+                아이디
+            </div>
+
+            <div style="display: flex; width: 100%;">
+                <input id="appId" class="round" style="font-size: 16px; width: 100%; height: 40px;" />
+            </div>
+        </div>
+
+        <div style="margin-bottom: 30px;">
+            <div style="margin-bottom: 5px;">
+                비밀번호
+            </div>
+
+            <div style="display: flex; width: 100%;">
+                <input id="appPassword" class="round" type="password"
+                    style="font-size: 16px; width: 100%; height: 40px;" />
+            </div>
+        </div>
+
+        <div style="margin-bottom: 30px;">
+            <div style="display: flex; width: 100%;">
+                <button id="signIn" class="button round inform" style="font-size: 16px; width: 100%; height: 44px;">
+                    로그인
+                </button>
+            </div>
+        </div>
+
+        <table style="margin-bottom: 30px;">
+            <tr>
+                <td style="color: white; width: 50%; text-align: left;">
+                    <label style="cursor: pointer; font-size: 16px;">
+                        <input id="autoFillId" type="checkbox"
+                            style="cursor: pointer; width: 20px; height: 20px; padding: 0; margin:0; vertical-align: bottom;" />
+
+                        &nbsp;
+
+                        아이디 저장
+                    </label>
+                </td>
+
+                <td style="color: white; width: 50%; text-align: left;">
+                    <label style="cursor: pointer; font-size: 16px;">
+                        <input id="autoSignIn" type="checkbox"
+                            style="cursor: pointer; width: 20px; height: 20px; padding: 0; margin:0; vertical-align: bottom;" />
+
+                        &nbsp;
+
+                        자동 로그인
+                    </label>
+                </td>
+
+                <td>
+                </td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td style="color: lightgray; font-size: 14px; width: 70%; text-align: left;">
+                    아직 트랜져스 계정이 없으신가요?
+                </td>
+
+                <td style="width: 30%; text-align: right;">
+                    <button id="signUp" class="button round default"
+                        style="font-size: 14px; width: 100%; height: 30px;">
+                        회원가입
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="headerSignUp" class="header-login dark" style="display: none; width: 360px;">
+        <div style="color: white; margin-bottom: 50px; font-size: 30px; text-align: center;">
+            회원가입
+        </div>
+
+        <table style="margin-bottom: 30px;">
+            <tr>
+                <td style="color: white; text-align: left; width: 35%;">
+                    아이디
+                </td>
+
+                <td>
+                    <div style="display: flex; width: 100%;">
+                        <input id="signId" class="round" style="font-size: 14px; width: 100%; height: 30px;" />
+
+                        &nbsp;
+
+                        <button id="signIdVerify" class="button round inform"
+                            style="font-size: 14px; width: 50%; height: 34px;">
+                            중복검사
+                        </button>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="color: white; text-align: left; width: 35%;">
+                    비밀번호
+                </td>
+
+                <td>
+                    <div style="display: flex; width: 100%;">
+                        <input id="signPassword" class="round" type="password"
+                            style="font-size: 14px; width: 100%; height: 30px;" />
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="color: white; text-align: left; width: 35%;">
+                    비밀번호 확인
+                </td>
+
+                <td>
+                    <div style="display: flex; width: 100%;">
+                        <input id="signPasswordCheck" class="round" type="password"
+                            style="font-size: 14px; width: 100%; height: 30px;" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <table style="margin-bottom: 30px;">
+            <tr>
+                <td style="color: white; text-align: left; width: 35%;">
+                    이메일
+                </td>
+
+                <td>
+                    <div style="display: flex; width: 100%;">
+                        <input id="signEmail" class="round" style="font-size: 14px; width: 100%; height: 30px;" />
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="color: white; text-align: left; width: 35%;">
+                    성명
+                </td>
+
+                <td>
+                    <div style="display: flex; width: 100%;">
+                        <input id="signName" class="round" style="font-size: 14px; width: 100%; height: 30px;" />
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="color: white; text-align: left; width: 35%;">
+                    연락처
+                </td>
+
+                <td>
+                    <div style="display: flex; width: 100%;">
+                        <input id="signPhone" class="round" style="font-size: 14px; width: 100%; height: 30px;" />
+
+                        &nbsp;
+
+                        <button id="signPhoneVerify" class="button round inform"
+                            style="font-size: 14px; width: 50%; height: 34px;">
+                            인증
+                        </button>
+                    </div>
+                </td>
+            </tr>
+
+            <tr id="verifyContent" style="display: none;">
+                <td style="color: white; text-align: left; width: 35%;">
+                    인증번호
+                </td>
+
+                <td>
+                    <div style="display: flex; width: 100%;">
+                        <input id="verifyCode" class="round" style="font-size: 14px; width: 100%; height: 30px;" />
+
+                        &nbsp;
+
+                        <button id="verifyAccept" class="button round inform"
+                            style="font-size: 14px; width: 50%; height: 34px;">
+                            확인
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <table style="margin-bottom: 30px;">
+            <tr>
+                <td style="color: white; text-align: left; width: 35%;">
+                    추천인코드
+                </td>
+
+                <td>
+                    <div style="display: flex; width: 100%;">
+                        <input id="signRefCode" class="round" style="font-size: 14px; width: 100%; height: 30px;" />
+
+                        &nbsp;
+
+                        <button id="refCodeVerify" class="button round inform"
+                            style="font-size: 14px; width: 50%; height: 34px;">
+                            입력
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="default round" style="font-size: 12px; margin-bottom: 30px; text-align: center;">
+            <label style="cursor: pointer;">
+                <input id="signAccept" type="checkbox" style="cursor: pointer; vertical-align: middle;" />
+
+                가입 내용을 확인하였으며,
+
+                <a target="_blank" href="https://panoramic-butternut-291.notion.site/5090b4282d88479f8608cd7f60bce6c2"
+                    style="text-decoration: underline;">
+                    서비스 이용약관
+                </a>
+
+                에 동의합니다.
+            </label>
+        </div>
+
+        <button id="signSubmit" class="button round inform"
+            style="font-size: 16px; width: 100%; height: 44px; margin-bottom: 5px;">
+            가입하기
+        </button>
+
+        <button id="signAgain" class="button round default" style="font-size: 16px; width: 100%; height: 44px;">
+            로그인으로 돌아가기
+        </button>
+    </div>
+
+    <div id="toastContainer" class="toast-container">
+    </div>
+</body>
+
+</html>

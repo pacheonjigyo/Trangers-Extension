@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <link id="appTheme" href="common.css" type="text/css" rel="stylesheet" charset="utf-8" />
+        <link href="../ui/css/uicons-regular-straight.css" rel="stylesheet" />
+
+        <title>
+            트랜져스
+        </title>
+
+    </head>
+    
+    <body> 
+        <div id="loading" class="overlay" style="display: none;">
+            <div class="loading-large" style="width: 60px; height: 60px;"></div>
+        </div>
+        
+        <div class="header">
+            <table style="background: rgb(59 102 181);">
+                <tr>
+                    <td class="header-top" style="width: 10px;">
+                    </td>
+
+                    <td id="mainImg" class="header-top" style="width: 32px;">
+                        <img src="../icon48.png" height="32px" />
+                    </td>
+
+                    <td class="header-top" style="text-align: left; width: 100px;">
+                        <span id="pageTitle" class="header-text">
+                            트랜져스
+                        </span>
+                    </td>
+
+                    <td>
+
+                    </td>
+
+                    <td class="header-top" style="font-weight: bold; text-align: right;">
+                        <div class="tooltip">
+                            <div class="tooltip-text tooltip-bottom">
+                                <div id="pageLimit">
+                                </div>
+                            </div>
+
+                            <span id="pageUser" style="cursor: pointer; font-size: 14px;">
+                            </span>
+
+                            &nbsp;
+
+                            <span id="pageType" style="border-radius: 25px; cursor: pointer; font-size: 14px; padding: 7px 10px 7px 10px;">
+                            </span>
+                        </div>
+                    </td>
+
+                    <td class="header-top" style="width: 100px;">
+                        <button id="pageUserGuide" class="button default" style="border-radius: 5px; font-weight: bold; width: 100%; height: 30px;">
+                            유저 가이드
+                        </button>
+                    </td>
+
+                    <td class="header-top" style="width: 100px;">
+                        <button id="pagePayment" class="button default" style="border-radius: 5px; font-weight: bold; width: 100%; height: 30px;">
+                            이용권 결제
+                        </button>
+                    </td>
+
+                    <td class="header-top" style="width: 100px;">
+                        
+                        <button id="pageLogOut" class="button secondary" style="border-radius: 5px; font-weight: bold; width: 100%; height: 30px;">
+                            로그아웃
+                        </button>
+                    </td>
+
+                    <td class="header-top" style="width: 10px;">
+                    </td>
+                </tr>
+            </table>
+
+            <table id="menuToolbar" style="background: rgb(80, 80, 80); display: none;">
+                <tr>
+                    <td class="header-top" style="width: 10px;">
+                    </td>
+
+                    <td class="header-top">
+                        <div style="color: white; display: flex;">
+                            <div>
+                                <ul style="font-size: 11px; padding: 0px; display: flex; list-style: none;">
+                                    <li style="margin-right: 10px;">
+                                        <div style="display: flex;">
+                                            <button id="multipleTranslation" class="toolbar button default btnTooltip" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px; width: 40px; height: 40px; margin: auto;">
+                                                <span class="btnKeys_top">Shift + 1</span>
+                                                <img src="../icons/01traslateall.svg" alt="" width="34px" />
+                                            </button>
+    
+                                            <button id="selectTranslationType" class="button default " style="border-top-right-radius: 5px; border-bottom-right-radius: 5px; width: 20px; height: 40px;">
+                                                <i class="fi fi-rs-angle-down" style="font-size: 10px;"></i>
+                                            </button>
+    
+                                        </div>
+                                        
+                                        <br />
+                                       
+                                        <div id="selectTranslationSelect" style="display: none; position: absolute; width: 80px; z-index: 1;">
+                                            <button id="thumbnailButton" class="button default" style="font-size: 11px; width: 100%;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="../icons/29category.svg" alt="" width="34px" /> &nbsp; 썸네일
+                                                </div>
+                                            </button>
+
+                                            <button id="optionButton" class="button default" style="font-size: 11px; width: 100%;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="../icons/30option.svg" alt="" width="34px" /> &nbsp; 옵션
+                                                </div>
+                                            </button>
+
+                                            <button id="detailButton" class="button default" style="font-size: 11px; width: 100%;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="../icons/31detail.svg" alt="" width="34px" /> &nbsp; 상세
+                                                </div>
+                                            </button>
+                                        </div>
+
+                                        전체번역
+                                    </li>
+                                    
+                                    <li style="margin-right: 10px;">
+                                        <button id="singleTranslation" class="toolbar button default btnTooltip" style="border-radius: 5px; width: 40px; height: 40px; margin: auto;">
+                                            <span class="btnKeys_top">Shift + 2</span>
+                                            <img src="../icons/02traslateone.svg" alt="" width="34px" />
+                                        </button>
+
+                                        <br />
+
+                                        한장번역
+                                    </li>
+                                    
+                                    <li style="margin-right: 10px;">
+                                        <button id="areaTranslation" key="1" class="toolbar button default btnTooltip" style="border-radius: 5px; width: 40px; height: 40px; margin: auto;">
+                                            <span class="btnKeys_top">Shift + 3</span>
+                                            <img src="../icons/03traslatearea.svg" alt="" width="34px" />
+                                        </button>
+
+                                        <br />
+
+                                        영역번역
+                                    </li>
+
+                                    
+                                    
+                                    <!-- <li style="width: 50px; margin-right: 5px;">
+                                        <button id="multipleRemove" key="3" class="toolbar button default" style="border-radius: 5px; width: 40px; height: 40px; margin: auto;">
+                                            <img src="../icons/04textremoveall.svg" alt="" width="34px" />
+                                        </button>
+
+                                        <br />
+
+                                        전체제거
+                                    </li>
+
+                                    <li style="width: 50px; margin-right: 5px;">
+                                        <button id="singleRemove" key="4" class="toolbar button default" style="border-radius: 5px; width: 40px; height: 40px; margin: auto;">
+                                            <img src="../icons/05textremoveone.svg" alt="" width="34px" />
+                                        </button>
+
+                                        <br />
+
+                                        한장제거
+                                    </li>
+
+                                    <li style="width: 50px; margin-right: 5px;">
+                                        <button id="singleRemove" key="5" class="toolbar button default" style="border-radius: 5px; width: 40px; height: 40px; margin: auto;">
+                                            <img src="../icons/06textremovearea.svg" alt="" width="34px" />
+                                        </button>
+
+                                        <br />
+
+                                        영역제거
+                                    </li> -->
+
+                                    <li style="margin-right: 10px; position: relative;">
+                                        <div style="display: flex;">
+                                            <button id="areaRemove" key="2" class="toolbar button default btnTooltip" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px; width: 40px; height: 40px; margin: auto;">
+                                                <span class="btnKeys_top">Shift + 4</span>
+                                                <img src="../icons/17eraserdrag.svg" alt="" width="34px" />
+                                            </button>
+
+                                            <button id="areaRemoveType" class="button default " style="border-top-right-radius: 5px; border-bottom-right-radius: 5px; width: 20px; height: 40px;">
+                                                <i class="fi fi-rs-angle-down" style="font-size: 10px;"></i>
+                                            </button>
+                                        </div>
+
+                                        <br />
+
+                                        <div id="areaRemoveSelect" style="display: none; position: absolute; width: 80px; z-index: 1;">
+                                            <button id="areaRemoveDrag" class="button default" style="font-size: 11px; width: 100%;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="../icons/17eraserdrag.svg" alt="" width="34px" /> &nbsp; 드래그
+                                                </div>
+                                            </button>
+
+                                            <button id="areaRemoveBrush" class="button default" style="font-size: 11px; width: 100%;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="../icons/18eraserbrush.svg" alt="" width="34px" /> &nbsp; 브러쉬
+                                                </div>
+                                            </button>
+                                        </div>
+
+                                        잔상제거
+                                    </li>
+
+                                    <li style="position: relative;">
+                                        <div style="display: flex;">
+                                            <button id="areaRecovery" key="3" class="toolbar button default btnTooltip" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px; width: 40px; height: 40px; margin: auto;">
+                                                <span class="btnKeys_top">Shift + 5</span>
+                                                <img src="../icons/19restoredrag.svg" alt="" width="34px" />
+                                            </button>
+
+                                            <button id="areaRecoveryType" class="button default" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px; width: 20px; height: 40px;">
+                                                <i class="fi fi-rs-angle-down" style="font-size: 10px;"></i>
+                                            </button>
+                                        </div>
+                                        
+                                        <br />
+
+                                        <div id="areaRecoverySelect" style="display: none; position: absolute; width: 80px; z-index: 1;">
+                                            <button id="areaRecoveryDrag" class="button default" style="font-size: 11px; width: 100%;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="../icons/19restoredrag.svg" alt="" width="34px" /> &nbsp; 드래그
+                                                </div>
+
+                                            </button>
+
+                                            <button id="areaRecoveryBrush" class="button default" style="font-size: 11px; width: 100%;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="../icons/20restorebrush.svg" alt="" width="34px" /> &nbsp; 브러쉬
+                                                </div>
+                                            </button>
+                                        </div>
+
+                                        영역복구
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div style="width: 20px;">
+                            
+                            </div>
+
+                            <div>
+                                <ul style="font-size: 11px; padding: 0px; display: flex; list-style: none;">
+                                    <li style="margin-right: 10px;">
+                                        <select id="startRegion" class="button default" style="border-radius: 5px; cursor: pointer; font-size: 12px; width: 60px; height: 40px;">
+                                            <option value="ko">
+                                                한국어
+                                            </option>
+
+                                            <option value="en">
+                                                영어
+                                            </option>
+                
+                                            <option value="ja">
+                                                일본어
+                                            </option>
+                
+                                            <option selected value="zh-CN">
+                                                중국어
+                                            </option>
+                
+                                            <option value="es">
+                                                스페인어
+                                            </option>
+                
+                                            <option value="fr">
+                                                프랑스어
+                                            </option>
+                
+                                            <option value="de">
+                                                독일어
+                                            </option>
+                
+                                            <option value="ru">
+                                                러시아어
+                                            </option>
+                
+                                            <option value="it">
+                                                이탈리아어
+                                            </option>
+                
+                                            <option value="vi">
+                                                베트남어
+                                            </option>
+                
+                                            <option value="th">
+                                                태국어
+                                            </option>
+                
+                                            <option value="id">
+                                                인도네시아어
+                                            </option>
+                                        </select>
+
+                                        <br />
+
+                                        원문언어
+                                    </li>
+
+                                    <li>
+                                        <select id="endRegion" class="button default" style="border-radius: 5px; cursor: pointer; font-size: 12px; width: 60px; height: 40px;">
+                                            <option selected value="ko">
+                                                한국어
+                                            </option>
+
+                                            <option value="en">
+                                                영어
+                                            </option>
+                
+                                            <option value="ja">
+                                                일본어
+                                            </option>
+                
+                                            <option value="zh-CN">
+                                                중국어
+                                            </option>
+                
+                                            <option value="es">
+                                                스페인어
+                                            </option>
+                
+                                            <option value="fr">
+                                                프랑스어
+                                            </option>
+                
+                                            <option value="de">
+                                                독일어
+                                            </option>
+                
+                                            <option value="ru">
+                                                러시아어
+                                            </option>
+                
+                                            <option value="it">
+                                                이탈리아어
+                                            </option>
+                
+                                            <option value="vi">
+                                                베트남어
+                                            </option>
+                
+                                            <option value="th">
+                                                태국어
+                                            </option>
+                
+                                            <option value="id">
+                                                인도네시아어
+                                            </option>
+                                        </select>
+
+                                        <br />
+
+                                        번역언어
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div style="width: 20px;">
+                            
+                            </div>
+
+                            <div>
+                                <ul style="font-size: 11px; padding: 0px; display: flex; list-style: none;">
+                                    <li style="margin-right: 10px;">
+                                        <div style="display: flex;">
+                                            <button id="shapeStart" class="button default" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px; width: 40px; height: 40px; margin: auto;">
+                                                <img src="../icons/08figurebox.svg" alt="" width="34px" />
+                                            </button>
+
+                                            <button id="shapeType" class="button default" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px; width: 20px; height: 40px;">
+                                                <i class="fi fi-rs-angle-down" style="font-size: 10px;"></i>
+                                            </button>
+                                        </div>
+                                        
+                                        <br />
+
+                                        <div id="shapeSelect" style="display: none; position: absolute; width: 100px; z-index: 1;">
+                                            <button id="shapeFill" class="button default" style="font-size: 11px; width: 100%;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="../icons/08figurebox.svg" alt="" width="34px" /> &nbsp; 사각형
+                                                </div>
+
+                                            </button>
+
+                                            <!-- <button id="shapeOutlined" class="button default" style="font-size: 11px; width: 100%;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="../icons/09figureline.svg" alt="" width="34px" /> &nbsp; 비워진 도형
+                                                </div>
+                                            </button> -->
+
+                                            <!-- <button id="ovalOutlined" class="button default" style="font-size: 11px; width: 100%;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="../icons/09figureline.svg" alt="" width="34px" /> &nbsp; 원
+                                                </div>
+                                            </button>
+
+                                            <button id="triangleOutlined" class="button default" style="font-size: 11px; width: 100%;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="../icons/09figureline.svg" alt="" width="34px" /> &nbsp; 삼각형
+                                                </div>
+                                            </button> -->
+                                        </div>
+
+                                        도형
+                                    </li>
+
+                                    <li style="margin-right: 10px;">
+                                        <div style="display: flex;">
+                                            <button id="textStart" class="toolbar button default" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px; width: 40px; height: 40px; margin: auto;">
+                                                <img src="../icons/10text.svg" alt="" width="34px" />
+                                            </button>
+
+                                            <button id="textType" class="button default" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px; width: 20px; height: 40px;">
+                                                <i class="fi fi-rs-angle-down" style="font-size: 10px;"></i>
+                                            </button>
+                                        </div>
+
+                                        <br />
+
+                                        <div id="textSelect" style="display: none; position: absolute; width: 80px; z-index: 1;">
+                                            <button id="horizontal" class="button default" style="font-size: 11px; width: 100%;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="../icons/32horizontal.svg" alt="" width="34px" /> &nbsp; 가로
+                                                </div>
+
+                                            </button>
+
+                                            <button id="vertical" class="button default" style="font-size: 11px; width: 100%;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="../icons/33vertical.svg" alt="" width="34px" /> &nbsp; 세로
+                                                </div>
+
+                                            </button>
+                                        </div>
+                                        텍스트
+                                    </li>
+
+                                    <li>
+                                        <button id="cropStart" key="4" class="toolbar button default" style="border-radius: 5px; width: 40px; height: 40px; margin: auto;">
+                                            <img src="../icons/07crop.svg" alt="" width="34px" />
+                                        </button>
+
+                                        <br />
+
+                                        자르기
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div style="width: 20px;">
+                            
+                            </div>
+
+                            <div>
+                                <ul style="font-size: 11px; padding: 0px; display: flex; flex-wrap: wrap; width: 94px; list-style: none;">
+                                    <li style="margin: 0px 2px 2px 0px;">
+                                        <button id="alignLeft" class="button default" style="border-radius: 5px; width: 30px; height: 30px; margin: auto;">
+                                            <img src="../icons/11leftobj.svg" alt="" width="24px" />
+                                        </button>
+                                    </li>
+
+                                    <li style="margin: 0px 2px 2px 0px;">
+                                        <button id="alignCenter" class="button default" style="border-radius: 5px; width: 30px; height: 30px; margin: auto;">
+                                            <img src="../icons/12centerobj.svg" alt="" width="24px" />
+                                        </button>
+                                    </li>
+
+                                    <li style="margin: 0px 0px 2px 0px;">
+                                        <button id="alignRight" class="button default" style="border-radius: 5px; width: 30px; height: 30px; margin: auto;">
+                                            <img src="../icons/13rightobj.svg" alt="" width="24px" />
+                                        </button>
+                                    </li>
+
+                                    <li style="margin: 0px 2px 2px 0px;">
+                                        <button id="alignTop" class="button default" style="border-radius: 5px; width: 30px; height: 30px; margin: auto;">
+                                            <img src="../icons/14topobj.svg" alt="" width="24px" />
+                                        </button>
+                                    </li>
+
+                                    <li style="margin: 0px 2px 2px 0px;">
+                                        <button id="alignMiddle" class="button default" style="border-radius: 5px; width: 30px; height: 30px; margin: auto;">
+                                            <img src="../icons/15middleobj.svg" alt="" width="24px" />
+                                        </button>
+                                    </li>
+
+                                    <li style="margin: 0px 0px 2px 0px;">
+                                        <button id="alignBottom" class="button default" style="border-radius: 5px; width: 30px; height: 30px; margin: auto;">
+                                            <img src="../icons/16bottomobj.svg" alt="" width="24px" />
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td class="header-top">
+                        <div style="color: white; display: flex; justify-content: flex-end;">
+                            <div>
+                                <ul style="font-size: 11px; padding: 0px; display: flex; flex-wrap: wrap; width: 62px; list-style: none;">
+                                    <li style="margin: 0px 2px 2px 0px;">
+                                        <button id="previewZoomOut" class="button default btnTooltip" style="border-radius: 5px; width: 30px; height: 30px; margin: auto;">
+                                            <sapn class="btnKeys_top" style="width: 130px;">Shift + Scroll ↓</sapn>
+                                            <img src="../icons/21zoomout.svg" alt="" width="24px" />
+                                        </button>
+                                    </li>
+
+                                    <li style="margin: 0px 0px 2px 0px;">
+                                        <button id="previewZoomIn" class="button default btnTooltip" style="border-radius: 5px; width: 30px; height: 30px; margin: auto;">
+                                            <sapn class="btnKeys_top" style="width: 130px;">Shift + Scroll ↑</sapn>
+                                            <img src="../icons/22zoomin.svg" alt="" width="24px" />
+                                        </button>
+                                    </li>
+
+                                    <li style="display: none;">
+                                        <label style="cursor: pointer;">
+                                            <input id="previewSize" value="50" max="200" type="range" style="cursor: pointer; width: 60px; height: 40px; vertical-align: middle;" />
+                                        </label>
+                                    </li>
+                                    
+                                    <li style="margin: 0px 2px 2px 0px;">
+                                        <button id="playUndo" class="button default btnTooltip"  style="border-radius: 5px; width: 30px; height: 30px; margin: auto;">
+                                            <sapn class="btnKeys_bottom">Ctrl + Z</sapn>
+                                            <img src="../icons/23undo.svg" alt="" width="24px" />
+                                        </button>
+                                    </li>
+
+                                    <li style="margin: 0px 0px 2px 0px;">
+                                        <button id="playRedo" class="button default btnTooltip"  style="border-radius: 5px; width: 30px; height: 30px; margin: auto;">
+                                            <sapn class="btnKeys_bottom">Ctrl + X</sapn>
+                                            <img src="../icons/24redo.svg" alt="" width="24px" />
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div style="width: 20px;">
+                            
+                            </div>
+
+                            <div>
+                                <ul style="font-size: 11px; padding: 0px; display: flex; list-style: none;">
+                                    <li style="margin-right: 10px;">
+                                        <button id="displayDouble" class="button default" style="border-radius: 5px; width: 40px; height: 40px; margin: auto;">
+                                            <img src="../icons/27double.svg" alt="" width="34px" />
+                                        </button>
+
+                                        <br />
+
+                                        레이아웃
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <ul style="font-size: 11px; padding: 0px; display: flex; list-style: none;">
+                                    <li style="margin-right: 10px;">
+                                        <button id="btnSetting" class="button default" style="border-radius: 5px; width: 40px; height: 40px; margin: auto;">
+                                            <img src="../icons/34settings.svg" alt="" width="34px" />
+                                        </button>
+
+                                        <br />
+
+                                        환경설정
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div style="width: 20px;">
+                            
+                            </div>
+
+                            <div>
+                                <ul style="font-size: 11px; padding: 0px; display: flex; list-style: none;">
+                                    <li style="margin-right: 10px;">
+                                        <button id="imageRecovery" class="button secondary btnTooltip" style="border-radius: 5px; padding-top: 7px; width: 40px; height: 40px; margin: auto;">
+                                            <span class="btnKeys_top">Shift + A</span>
+                                            <i class="fi fi-rs-time-past" style="font-size: 18px;"></i>
+                                        </button>
+
+                                        <br />
+
+                                        원본복구
+                                    </li>
+
+                                    <li style="margin-right: 10px;">
+                                        <button id="imageTemp" class="button default btnTooltip" style="border-radius: 5px; padding-top: 7px; width: 40px; height: 40px; margin: auto;">
+                                            <span class="btnKeys_top">Shift + S</span>
+                                            <i class="fi fi-rs-disk" style="font-size: 18px;"></i>
+                                        </button>
+
+                                        <br />
+
+                                        임시저장
+                                    </li>
+
+                                    <li style="margin-right: 10px;">
+                                        <button id="imageExit" class="button default btnTooltip" style="border-radius: 5px; padding-top: 7px; width: 40px; height: 40px; margin: auto;">
+                                            <span class="btnKeys_top">Shift + D</span>
+                                            <i class="fi fi-rs-sign-out" style="font-size: 18px;"></i>
+                                        </button>
+
+                                        <br />
+
+                                        편집종료
+                                    </li>
+                                   
+                                    <li>
+                                        <button id="imageSave" key="5" class="toolbar button default btnTooltip" style="border-radius: 5px; padding-top: 7px; width: 40px; height: 40px; margin: auto;">
+                                            <span class="btnKeys_top">Shift + F</span>
+                                            <i class="fi fi-rs-download" style="font-size: 18px;"></i>
+                                        </button>
+
+                                        <br />
+
+                                        다운로드
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td class="header-top" style="width: 20px;">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="headerMain" class="header-center">
+            <div id="uploadText" style="color: white; margin: 50px 0px 50px 0px; font-size: 30px; font-weight: bold; text-align: center;">
+                업로드 방식을 선택해주세요.
+            </div>
+
+            <table>
+                <tr>
+                    <td>
+                        <label id="layoutFromPC" for="uploadFromPC" class="button dark round" style="padding: 30px; font-size: 30px; width: 400px; height: 400px;">
+                            <div style="margin: 50px 0px 50px 0px;">
+                                <i class="fi fi-rs-picture" style="font-size: 150px;"></i>
+                            </div>
+
+                            <div id="textFromPC" style="font-weight: bold;">
+                                이미지 파일로 가져오기
+
+                                <br />
+    
+                                <span style="color: lightgray; font-size: 16px;">
+                                    JPG / PNG 파일 형식
+                                </span>
+                            </div>
+                        </label> 
+
+                        <input id="uploadFromPC" type="file" multiple style="display: none;" accept=".jpg, .png" />
+                    </td>
+
+                    <td>
+                        <label id="layoutFromURL" for="uploadFromURL" class="button dark round" style="padding: 30px; font-size: 30px; width: 400px; height: 400px;">
+                            <div style="margin: 50px 0px 50px 0px;">
+                                <i class="fi fi-rs-link" style="font-size: 150px;"></i>
+                            </div>
+                            
+                            <div id="textFromURL" style="font-weight: bold;">
+                                쇼핑몰 링크로 가져오기
+
+                                <br />
+
+                                <span style="color: lightgray; font-size: 16px;">
+                                    타오바오 / 티몰 / 알리익스프레스 / 1688 / VVIC
+                                </span>
+                            </div>
+                        </label> 
+
+                        <button id="uploadFromURL" style="display: none;">
+                        </button>
+                    </td>
+
+                    <td>
+                        <div id="uploadFromRecent" class="dark round" style="padding: 30px; width: 400px; height: 400px;">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="3">
+                        <label id="layoutFromProject" for="uploadFromProject" class="button inform round" style="padding: 15px; font-size: 30px; height: 65px;">
+                            <table>
+                                <tr>
+                                    <td style="text-align: left; width: 50%;">
+                                        <i class="fi fi-rs-document" style="color: white; font-size: 50px;"></i>
+                                    </td>
+                                    
+                                    <td style="text-align: right; width: 50%;">
+                                        <div id="textFromProject" style="color: white; font-size: 24px; font-weight: bold;">
+                                            프로젝트 파일로 가져오기
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </label> 
+
+                        <input id="uploadFromProject" type="file" style="display: none;" accept=".project" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="headerSub" style="display: none; overflow: hidden;">
+            <div id="headerFromPC" class="header-menu" style="display: none;">
+                <button class="menu selected" key="0">
+                    파일
+                </button>
+            </div>
+
+            <div id="headerFromURL" class="header-menu" style="display: none; margin-bottom: 6px;">
+                <button id="thumbnailToggle" class="menu selected" key="1">
+                    썸네일
+                </button>
+
+                <button id="optionToggle" class="menu" key="2">
+                    옵션
+                </button>
+
+                <button id="detailToggle" class="menu" key="3">
+                    상세
+                </button>
+
+                <button class="menu" key="4">
+                    동영상
+                </button>
+            </div>
+
+            <div style="display: flex;">
+                <div id="doubleFrame" class="canvas">
+                    <div style="background: rgb(54, 54, 54); color: white; position: absolute; z-index: 1; padding: 5px;">
+                        원본이미지
+                    </div>
+
+                    <canvas id="original">
+                    </canvas>
+                </div>
+
+                <div id="doubleBorder" style="background: rgb(54, 54, 54); display: flex; width: 30px; height: 750px;">
+                </div>
+
+                <div class="canvas">
+                    <div style="background: rgb(54, 54, 54); color: white; position: absolute; z-index: 1; padding: 5px;">
+                        번역이미지
+                    </div>
+
+                    <canvas id="main">
+                    </canvas>
+                </div>
+
+                <div id="mainCrop" class="header-sub" style="display: none;">
+                    <table style="margin-bottom: 10px;">
+                        <tr>
+                            <td class="th" style="height: 28px;">
+                                자르기 비율설정
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <td style="text-align: center; width: 100%;">
+                                <div style="background: whitesmoke; display: flex; height: 30px;">
+                                    <label class="radio activated">
+                                        <input checked value="1" type="radio" name="cropRatioType" style="display: none;">
+                                        
+                                        원본
+                                    </label>
+            
+                                    <label class="radio default">
+                                        <input value="2" type="radio" name="cropRatioType" style="display: none;">
+                                        
+                                        1:1
+                                    </label>
+            
+                                    <label class="radio default">
+                                        <input value="3" type="radio" name="cropRatioType" style="display: none;">
+                                        
+                                        자유
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+    
+                    <table>
+                        <tr>
+                            <td style="width: 50%;">
+                                <button class="button default" id="cropCancel" style="width: 100%; height: 30px;">
+                                    취소
+                                </button>
+                            </td>
+    
+                            <td style="width: 50%;">
+                                <button class="button primary" id="cropAccept" style="width: 100%; height: 30px;">
+                                    적용
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="mainWaterMark" class="header-sub" style="display: none;">
+                    <table style="margin-bottom: 10px;">
+                        <tr>
+                            <td class="th" style="height: 28px;">
+                                워터마크 문구
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <td style="display: flex; flex-direction: column;">
+                                <!-- <input id="applyWaterMarkText" style="height: 28px;"> -->
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+    
+                <div id="setting" class="header-login dark round" style="box-shadow: 0px 1px 3px black; display: none; width: 300px; z-index: 10;">
+                    <div style="text-align: center; font-size: 20px; font-weight: bold; margin-bottom: 40px;">
+                        환경설정
+                    </div>
+
+                    <table style="margin-bottom: 20px;">
+                        <tr>
+                            <td class="th" style="width: 50%;">
+                                다운로드 형식
+                            </td>
+
+                            <td style="width: 50%; padding: 0px;">
+                                <div style="background: whitesmoke; display: flex; height: 30px;">
+                                    <label class="radio default">
+                                        <input value="jpeg" type="radio" name="extensionType" style="display: none;">
+                                        
+                                        JPG
+                                    </label>
+            
+                                    <label class="radio default">
+                                        <input value="png" type="radio" name="extensionType" style="display: none;">
+                                        
+                                        PNG
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table style="margin-bottom: 20px;">
+                        <tr>
+                            <td colspan="2" class="th" style="height: 28px;">
+                                워터마크
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <td class="th" style="width: 50%;">
+                                사용여부
+                            </td>
+
+                            <td style="width: 50%; padding: 0px;">
+                                <div style="background: whitesmoke; display: flex; height: 30px;">
+                                    <label class="radio default">
+                                        <input value="Y" type="radio" name="waterMarkType" style="display: none;">
+                                        
+                                        Y
+                                    </label>
+            
+                                    <label class="radio default">
+                                        <input value="N" type="radio" name="waterMarkType" style="display: none;">
+                                        
+                                        N
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th" style="width: 50%;">
+                                텍스트
+                            </td>
+
+                            <td style="display: flex; padding: 0px;">
+                                <input id="applyWaterMarkText" autocomplete='off' style="text-align:left; width: 100%; height: 26px;">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th" style="width: 50%;">
+                                투명도
+                            </td>
+
+                            <td style="display: flex; padding: 0px;">
+                                <input id="applyWaterMarkOpacity" type="range" value="20" style="cursor: pointer; width: 100%; height: 24px;">
+                            </td>
+                        </tr>
+                    </table>
+                     
+                    <table style="margin-bottom: 20px;">
+                        <tr>
+                            <td colspan="2" class="th" style="height: 28px;">
+                                번역 잔상
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <td class="th" style="width: 50%; height:30px;">
+                                민감도
+                            </td>
+    
+                            <td style="display: flex; padding: 0px;">
+                                <input id="applySensitive" type="range" min="0" max="0.1" step="0.01" value="0.03"
+                                    style="cursor: pointer; width: 100%; height: 24px;">
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table id="originWidthPCLayout" style="margin-bottom: 20px;">
+                        <tr>
+                            <td colspan="3" class="th" style="height: 28px;">
+                                리사이징
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <td class="th" style="width: 50%;">
+                                이미지 가로크기
+                            </td>
+
+                            <td style="width: 25%; padding: 0px;">
+                                <select id="applyOriginWidthPC" class="default" style="width: 100%; height: 30px;">
+                                    <option value="Y">
+                                        원본
+                                    </option>
+
+                                    <option value="N">
+                                        직접입력
+                                    </option>
+                                </select>
+                            </td>
+
+                            <td style="display: flex; padding: 0px;">
+                                <input disabled id="originWidthPC" style="width: 100%; height: 26px;">
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table id="originWidthURLLayout" style="margin-bottom: 20px;">
+                        <tr>
+                            <td colspan="3" class="th" style="width: 100%; height: 28px;">
+                                리사이징
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <td class="th" style="width: 50%;">
+                                썸네일 가로크기
+                            </td>
+
+                            <td style="width: 25%;">
+                                <select id="applyOriginWidthThumbnail" class="default" style="width: 100%; height: 32px;">
+                                    <option value="Y">
+                                        원본
+                                    </option>
+
+                                    <option value="N">
+                                        직접입력
+                                    </option>
+                                </select>
+                            </td>
+
+                            <td style="display: flex;">
+                                <input disabled id="originWidthThumbnail" style="width: 100%; height: 28px;">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th" style="width: 50%;">
+                                옵션 가로크기
+                            </td>
+
+                            <td style="width: 25%;">
+                                <select id="applyOriginWidthOption" class="default" style="width: 100%; height: 32px;">
+                                    <option value="Y">
+                                        원본
+                                    </option>
+
+                                    <option value="N">
+                                        직접입력
+                                    </option>
+                                </select>
+                            </td>
+
+                            <td style="display: flex;">
+                                <input disabled id="originWidthOption" style="width: 100%; height: 28px;">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th" style="width: 50%;">
+                                상세 가로크기
+                            </td>
+
+                            <td style="width: 25%;">
+                                <select id="applyOriginWidthDescription" class="default" style="width: 100%; height: 32px;">
+                                    <option value="Y">
+                                        원본
+                                    </option>
+
+                                    <option value="N">
+                                        직접입력
+                                    </option>
+                                </select>
+                            </td>
+
+                            <td style="display: flex;">
+                                <input disabled id="originWidthDescription" style="width: 100%; height: 28px;">
+                            </td>
+                        </tr>
+                        
+                        <table>
+                            <tr>
+                                <td style="width: 100%;">
+                                    <button class="button default" id="settingAccept" style="width: 100%; height: 30px;">
+                                        닫기
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </table>
+                </div>
+
+                <div id="mainDownload" class="header-login dark round" style="box-shadow: 0px 1px 3px black; display: none; width: 300px; z-index: 10;">
+                    <div style="text-align: center; font-size: 20px; font-weight: bold; margin-bottom: 40px;">
+                        이미지 다운로드
+                    </div>
+                                      
+                    <table>
+                        <tr>
+                            <td style="width: 50%;">
+                                <button class="button default" id="saveCancel" style="width: 100%; height: 30px;">
+                                    취소
+                                </button>
+                            </td>
+    
+                            <td style="width: 50%;">
+                                <button class="button primary" id="saveAccept" style="width: 100%; height: 30px;">
+                                    저장
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">
+                                <button class="button default" id="saveProject" style="width: 100%; height: 30px;">
+                                    프로젝트 저장
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="mainTextEditor" class="header-sub" style="height: 750px;" >
+
+                    <table style="margin-bottom: 10px;">
+                        <tr>
+                            <td class="th" style="height: 28px;">
+                                원문
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="display: flex; flex-direction: column;">
+                                <textarea id="textOriginal" rows="7" disabled style="font-size: 14px; resize: none;"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table style="margin-bottom: 10px;">
+                        <tr>
+                            <td class="th" style="height: 28px;">
+                                번역문
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="display: flex; flex-direction: column;">
+                                <textarea id="textTranslated" rows="7" style="font-size: 14px; resize: none; background-color: white;"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+        
+                    <table style="margin-bottom: 10px;">
+                        <tr>
+                            <td style="width: 100%;">
+                                <button id="playOriginal" class="button default" style="width: 100%; height: 30px;">
+                                    원본 이미지 보기
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div style="padding: 0px 3px 0px 3px">
+                        <table style="border-collapse:collapse;" colspan="4">
+                            <tr>
+                                <td id="textTab" style="background-color:rgb(80, 80, 80); height: 31px; width: 60px; color: white; cursor: pointer;">
+                                    텍스트
+                                </td>
+                                <td id="shapeTab" style="background-color:rgb(65, 65, 65); height: 31px; width: 60px; color: white;">
+                                    도형
+                                </td>
+                                <td style="width: 60px;">
+                                    
+                                </td>
+                                <td style="width: 60px;">
+    
+                                </td>
+                            </tr>
+                        </table>
+    
+                        <table id="fixedShapeTool" style="background-color:rgb(80, 80, 80); padding: 4px 10px 6px; margin-bottom: 15px; display: none;">
+                            <tr>
+                                <td class="th" style="text-align: left; height: 35px; background-color: rgb(80, 80, 80);">도형 색상</td>
+                                <td style="text-align: right;">
+                                    <i class="fi fi-rs-fill" style="color: white;"></i>&nbsp
+                                    <input id="fixedShapeBackground" class="th" type="color" style="cursor: pointer; width: 28px; height: 28px; background-color: rgb(80, 80, 80);">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="th" style="text-align: left; height: 35px; background-color: rgb(80, 80, 80);">테두리 색상</td>
+                                <td style="text-align: right;">
+                                    <i class="fi fi-rs-square" style="color: white;"></i>&nbsp
+                                    <input id="fixedShapeOutlineColor" class="th" type="color" style="cursor: pointer; width: 28px; height: 28px; background-color: rgb(80, 80, 80);">
+                                </td>
+                            </tr>   
+                            <tr>
+                                <td class="th" style="text-align: left; height: 35px; background-color: rgb(80, 80, 80);">테두리 모양</td>
+                            </tr>   
+                            <td colspan="2">
+                                <input id="fixedShapeStrokeShape" type="range" value="0" min="0" max="150" class="th" style="width: 160px; height: 24px; cursor: pointer;" />
+                            </td>
+                            <tr>
+                                <td class="th" style="text-align: left; height: 35px; background-color: rgb(80, 80, 80);">테두리 굵기</td>
+                            </tr>
+                            <td colspan="2">
+                                <input id="fixedShapeStrokeWidth" type="range" value="0" min="0" max="10" class="th" style="width: 160px; height: 24px; cursor: pointer;" />
+                            </td>
+                        </table>
+    
+                        <table id="fixedTextTool" class="floatingTextTool" style="background-color:rgb(80, 80, 80); padding: 4px 10px 6px 10px; ">
+                            <tr>
+                                <td style="height: 33px;" colspan="2">
+                                    <select id="fixedTextFont" class="th" style="height: 26px; width: 170px; background-color: rgb(80, 80, 80); cursor: pointer;">
+                                        <option selected value="NNSQUAREROUNDR">
+                                            기본
+                                        </option>
+            
+                                        <option value="serif">
+                                            Serif
+                                        </option>
+            
+                                        <option value="sans-serif">
+                                            Sans-Serif
+                                        </option>
+            
+                                        <option value="monospace">
+                                            Monospace
+                                        </option>
+            
+                                        <option value="cursive">
+                                            Cursive
+                                        </option>
+            
+                                        <option value="fantasy">
+                                            Fantasy
+                                        </option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="th" style="text-align: left; height: 35px; background-color: rgb(80, 80, 80);">텍스트 사이즈</td>
+                                <td style="text-align: right;">
+                                    <input id="fixedTextSize" class="th" value="50" type="number" min="0" style="width: 56px; height: 24px; background-color: rgb(80, 80, 80); cursor: pointer;" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="th" style="text-align: left; height: 35px; background-color: rgb(80, 80, 80);">텍스트 색상</td>
+                                <td style="text-align: right;">
+                                    <i class="fi fi-rs-text" style="color: white;"></i>&nbsp
+                                    <input id="fixedTextColor" class="th" type="color" style="cursor: pointer; width: 28px; height: 28px; background-color: rgb(80, 80, 80);">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="th" style="text-align: left; height: 35px; background-color: rgb(80, 80, 80);">배경 색상</td>
+                                <td style="text-align: right;">
+                                    <i class="fi fi-rs-fill"style="color: white;"></i>&nbsp
+                                    <input id="fixedTextBackground" class="th" type="color" style="cursor: pointer; width: 28px; height: 28px; background-color: rgb(80, 80, 80);">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="th" style="text-align: left; height: 35px; background-color: rgb(80, 80, 80);">글꼴</td>
+                                <td style="text-align: right;">
+                                    <label style="color: white; cursor: pointer">
+                                        <input id="fixedTextBold" type="checkbox" style="display: none;" />
+                                        
+                                        <i class="fi fi-rs-bold"></i>
+                                    </label>
+            
+                                    &nbsp;
+            
+                                    <label style="color: white; cursor: pointer">
+                                        <input id="fixedTextItalic" type="checkbox" style="display: none;" />
+                                        
+                                        <i class="fi fi-rs-italic"></i>
+                                    </label>
+            
+                                    &nbsp;
+            
+                                    <label style="color: white; cursor: pointer">
+                                        <input id="fixedTextLineThrough" type="checkbox" style="display: none;" />
+                                        
+                                        <i class="fi fi-rs-cursor-text"></i>
+                                    </label>
+            
+                                    &nbsp;
+            
+                                    <label style="color: white; cursor: pointer">
+                                        <input id="fixedTextUnderLine" type="checkbox" style="display: none;" />
+                                        
+                                        <i class="fi fi-rs-underline"></i>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="th" style="text-align: left; height: 35px; background-color: rgb(80, 80, 80);">텍스트 정렬</td>
+                                <td style="text-align: right;">
+                                    <label style="color: white; cursor: pointer">
+                                        <input id="fixedTextAlignLeft" type="checkbox" style="display: none;" />
+                                        
+                                        <i class="fi fi-rs-align-left"></i>
+                                    </label>
+            
+                                    &nbsp;
+            
+                                    <label style="color: white; cursor: pointer">
+                                        <input id="fixedTextAlignCenter" type="checkbox" style="display: none;" />
+                                        
+                                        <i class="fi fi-rs-align-center"></i>
+                                    </label>
+            
+                                    &nbsp;
+            
+                                    <label style="color: white; cursor: pointer">
+                                        <input id="fixedTextAlignRight" type="checkbox" style="display: none;" />
+                                        
+                                        <i class="fi fi-rs-align-right"></i>
+                                    </label> 
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="headerSider"  class="header-sider">
+                <div style="display: flex;">
+                    <div style="margin-right: 7px; margin-left: 7px; width: 67px;">
+                        <button  id="checkAll" class="button primary" style="border-radius: 5px; font-weight: bold; width: 100%; height: 30px; margin: 12px 0px 10px;">
+                            전체선택
+                        </button>
+                        <button  id="checkDel" class="button primary" style="border-radius: 5px; font-weight: bold; width: 100%; height: 30px;">
+                            선택해제
+                        </button>
+                    </div>
+                    <div id="imageList" style="display: flex;">
+
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: none;">
+                <canvas id="mask" >
+                </canvas>
+            </div>
+        </div>
+
+        <div id="toastContainer" class="toast-container">
+        </div>
+
+        <div id="floatingTextTool" class="header-quick round" style="cursor: move; display: none; width: 461px;">
+            <table>
+                <tr>
+                    <td id="floatingTextToolDragger" draggable="true" style="color: white; text-align: left; padding-top: 5px; padding-right: 10px;">
+                        <i class="fi fi-rs-arrows"></i>
+                    </td>
+
+                    <td>
+                        <select id="toolTextFont" class="th" style="height: 26px;">
+                            <option selected value="NNSQUAREROUNDR">
+                                기본
+                            </option>
+
+                            <option value="serif">
+                                Serif
+                            </option>
+
+                            <option value="sans-serif">
+                                Sans-Serif
+                            </option>
+
+                            <option value="monospace">
+                                Monospace
+                            </option>
+
+                            <option value="cursive">
+                                Cursive
+                            </option>
+
+                            <option value="fantasy">
+                                Fantasy
+                            </option>
+                        </select>
+                    </td>
+
+                    <td>
+                        <input id="toolTextSize" class="th" type="number" min="0" style="width: 56px; height: 24px;" />
+                    </td>
+
+                    <td style="color: white; padding-top: 5px;">
+                        <i class="fi fi-rs-text"></i>
+                    </td>
+
+                    <td>
+                        <input id="toolTextColor" class="th" type="color" style="cursor: pointer; width: 28px; height: 28px;">
+                    </td>
+
+                    <td style="color: white; padding-top: 5px;">
+                        <i class="fi fi-rs-fill"></i>
+                    </td>
+
+                    <td>
+                        <input id="toolTextBackground" class="th" type="color" style="cursor: pointer; width: 28px; height: 28px;">
+                    </td>
+
+                    <td style="text-align: left; padding-top: 5px;">
+                        <label style="color: white; cursor: pointer">
+                            <input id="toolTextBold" type="checkbox" style="display: none;" />
+                            
+                            <i class="fi fi-rs-bold"></i>
+                        </label>
+
+                        &nbsp;
+
+                        <label style="color: white; cursor: pointer">
+                            <input id="toolTextItalic" type="checkbox" style="display: none;" />
+                            
+                            <i class="fi fi-rs-italic"></i>
+                        </label>
+
+                        &nbsp;
+
+                        <label style="color: white; cursor: pointer">
+                            <input id="toolTextLineThrough" type="checkbox" style="display: none;" />
+                            
+                            <i class="fi fi-rs-cursor-text"></i>
+                        </label>
+
+                        &nbsp;
+
+                        <label style="color: white; cursor: pointer">
+                            <input id="toolTextUnderLine" type="checkbox" style="display: none;" />
+                            
+                            <i class="fi fi-rs-underline"></i>
+                        </label>
+
+                        &nbsp;
+
+                        <label style="color: white; cursor: pointer">
+                            <input id="toolTextAlignLeft" type="checkbox" style="display: none;" />
+                            
+                            <i class="fi fi-rs-align-left"></i>
+                        </label>
+
+                        &nbsp;
+
+                        <label style="color: white; cursor: pointer">
+                            <input id="toolTextAlignCenter" type="checkbox" style="display: none;" />
+                            
+                            <i class="fi fi-rs-align-center"></i>
+                        </label>
+
+                        &nbsp;
+
+                        <label style="color: white; cursor: pointer">
+                            <input id="toolTextAlignRight" type="checkbox" style="display: none;" />
+                            
+                            <i class="fi fi-rs-align-right"></i>
+                        </label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="floatingShapeTool" class="header-quick round" style="cursor: move; display: none; width: 300px;">
+            <table>
+                <tr>
+                    <td id="floatingShapeToolDragger" draggable="true" style="color: white; text-align: left; padding-top: 5px; padding-right: 10px;">
+                        <i class="fi fi-rs-arrows"></i>
+                    </td>
+
+                    <td style="color: white; padding-top: 5px;">
+                        <i class="fi fi-rs-square"></i>
+                    </td>
+
+                    <td>
+                        <input id="toolShapeOutlineColor" class="th" type="color" style="cursor: pointer; width: 28px; height: 28px;">
+                    </td>
+
+                    <td style="color: white; padding-top: 5px;">
+                        <i class="fi fi-rs-fill"></i>
+                    </td>
+
+                    <td>
+                        <input id="toolShapeBackground" class="th" type="color" style="cursor: pointer; width: 28px; height: 28px;">
+                    </td>
+
+                    <td style="color: white;">
+                        <i class="fi fi-rs-line-width"></i>
+                    </td>
+
+                    <td>
+                        <input id="toolShapeStrokeWidth" type="range" value="0" min="0" max="10" class="th" style="width: 56px; height: 24px; cursor: pointer;" />
+                    </td>
+
+                    <td style="color: white;">
+                        <i class="fi fi-rs-resources"></i>
+                    </td>
+
+                    <td>
+                        <input id="toolShapeStrokeShape" type="range" value="0" min="0" max="150" class="th" style="width: 56px; height: 24px; cursor: pointer;" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
